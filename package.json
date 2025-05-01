@@ -1,0 +1,38 @@
+{
+  "name": "deeplx-serverless",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "DeepLX Free API for Serverless",
+  "author": "Lete114",
+  "license": "MIT",
+  "homepage": "https://github.com/lete114/deeplx-serverless#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lete114/deeplx-serverless.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lete114/deeplx-serverless/issues"
+  },
+  "keywords": [
+    "deepl",
+    "deeplx",
+    "translate",
+    "free"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:hot": "nodemon server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "body-data": "^1.0.7",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.6.0",
+    "eslint": "^9.10.0",
+    "nodemon": "^3.1.4"
+  }
+}
