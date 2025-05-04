@@ -1,5 +1,6 @@
 import process from 'node:process'
-import BodyData from 'body-data'
+import { bodyData } from 'body-data'
+
 import { translate } from './translate.js'
 import 'dotenv/config'
 
@@ -16,10 +17,10 @@ export async function main(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
 
-  const query = getQuery(req)
+  const { params, body } = await bodyData(req, { backContentType: 'application/json; charset=utf-8' })
 
   if (token.length) {
-    if (!token.includes(query.token)) {
+    if (!token.includes(params.token)) {
       const code = 403
       const msg = `Request missing authentication information`
       res.statusCode = code
@@ -29,18 +30,17 @@ export async function main(req, res) {
   }
 
   if (req.method.toUpperCase() === 'POST') {
-    const data = await BodyData(req)
-    if (data.source_lang) {
-      data.from = data.source_lang
+    if (body.source_lang) {
+      body.from = body.source_lang
     }
-    if (data.target_lang) {
-      data.to = data.target_lang
+    if (body.target_lang) {
+      body.to = body.target_lang
     }
 
-    if (req.url.startsWith('/translate') && data.to && data.text) {
-      const text = data.text
-      const from = (data.from || 'AUTO').toUpperCase()
-      const to = data.to.toUpperCase()
+    if (req.url.startsWith('/translate') && body.to && body.text) {
+      const text = body.text
+      const from = (body.from || 'AUTO').toUpperCase()
+      const to = body.to.toUpperCase()
       const translateData = await translate({ text, from, to })
 
       const result = translateData.result
@@ -77,20 +77,4 @@ export async function main(req, res) {
     res.statusCode = code
     res.end(JSON.stringify({ code, msg }))
   }
-}
-
-/**
- * Get get request data
- * @param {IncomingMessage} req Request object
- * @returns {object} object
- */
-function getQuery(req) {
-  // if not directly return the empty object
-  if (!req.url) {
-    return {}
-  }
-
-  const { searchParams } = new URL(req.url, `http://${req.headers.host}`)
-
-  return Object.fromEntries(searchParams)
 }
