@@ -6,7 +6,7 @@
  * @param {string} options.text - The text to translate.
  * @param {"AUTO"|"BG"|"CS"|"DA"|"DE"|"EL"|"EN"|"ES"|"ET"|"FI"|"FR"|"HU"|"ID"|"IT"|"JA"|"KO"|"LT"|"LV"|"NB"|"NL"|"PL"|"PT"|"RO"|"RU"|"SK"|"SL"|"SV"|"TR"|"UK"|"ZH"} options.from - The source language code.
  * @param {"AR"|"BG"|"CS"|"DA"|"DE"|"EL"|"EN-GB"|"EN-US"|"ES"|"ET"|"FI"|"FR"|"HU"|"ID"|"IT"|"JA"|"KO"|"LT"|"LV"|"NB"|"NL"|"PL"|"PT-BR"|"PT-PT"|"RO"|"RU"|"SK"|"SL"|"SV"|"TR"|"UK"|"ZH"|"ZH-HANS"|"ZH-HANT"} options.to - The target language code.
- * @returns {Promise<string>} The translated text.
+ * @returns {Promise<Response>} The translated text.
  */
 export async function translate(options) {
   const { text, from, to } = options
@@ -45,11 +45,7 @@ export async function translate(options) {
       )
     }
 
-    if (response.ok) {
-      return response.json()
-    }
-
-    throw new Error(`request failed`)
+    return response
   }
   catch (error) {
     console.error('request error:', error)

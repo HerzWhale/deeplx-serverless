@@ -41,7 +41,13 @@ export async function main(req, res) {
       const text = body.text
       const from = (body.from || 'AUTO').toUpperCase()
       const to = body.to.toUpperCase()
-      const translateData = await translate({ text, from, to })
+      const response = await translate({ text, from, to })
+      const translateData = await response.json()
+
+      if (translateData.error) {
+        res.statusCode = response.status
+        return res.end(JSON.stringify(translateData))
+      }
 
       const result = translateData.result
       const texts = result.texts[0]
