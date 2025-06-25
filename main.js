@@ -60,7 +60,7 @@ export async function main(req, res) {
         source_lang: result.lang,
         target_lang: to,
         data: texts.text,
-        alternatives: texts.alternatives,
+        alternatives: texts.alternatives.map(i => i.text),
       }
       return res.end(JSON.stringify(responseData))
     }

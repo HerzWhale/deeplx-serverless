@@ -2,7 +2,6 @@
 
 DeepLX Free Deployment Translation API, API Compatible with [OwO-Network/DeepLX](https://github.com/OwO-Network/DeepLX), Using Serverless to Avoid Frequent Calls and Error Reporting `429`
 
-
 ## Usage
 
 Request example:
@@ -28,15 +27,9 @@ Response example:
   "target_lang": "ZH",
   "data": "你好，世界",
   "alternatives": [
-    {
-      "text": "世界，你好"
-    },
-    {
-      "text": "世界你好"
-    },
-    {
-      "text": "您好，世界"
-    }
+    "世界，你好",
+    "世界你好",
+    "您好，世界"
   ]
 }
 ```
