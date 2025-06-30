@@ -6,7 +6,7 @@ DeepLX Free Deployment Translation API, API Compatible with [OwO-Network/DeepLX]
 
 ### Vercel
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FLete114%2Fdeeplx-serverless&env=token&envDescription=Defining%20tokens%20is%20safer.%20Multiple%20tokens%20can%20be%20separated%20by%20commas%20in%20English&project-name=deeplx)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Flete114%2Fdeeplx-serverless%2Ftree%2Fmain%2Fplatform%2Fvercel&env=token&envDescription=Configure%20the%20token%20to%20be%20more%20secure%20and%20avoid%20misuse%20by%20others.%20Multiple%20tokens%20are%20separated%20by%20commas&project-name=deeplx&repository-name=deeplx-serverless)
 
 ## Usage
 
