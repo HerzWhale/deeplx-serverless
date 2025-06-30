@@ -1,0 +1,13 @@
+{
+  "name": "vercel",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "body-data": "^2.0.1",
+    "dotenv": "^16.4.5"
+  }
+}

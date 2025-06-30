@@ -19,20 +19,12 @@
     "translate",
     "free"
   ],
-  "main": "main.js",
   "scripts": {
-    "start": "node server.js",
-    "start:hot": "nodemon server.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "dependencies": {
-    "body-data": "^2.0.1",
-    "dotenv": "^16.4.5"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
-    "eslint": "^9.10.0",
-    "nodemon": "^3.1.4"
+    "eslint": "^9.10.0"
   }
 }
