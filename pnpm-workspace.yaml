@@ -1,2 +1,7 @@
 packages:
   - platform/*
+
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - workerd

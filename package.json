@@ -23,6 +23,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
+  "dependencies": {
+    "body-data": "^2.0.1"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
     "eslint": "^9.10.0"

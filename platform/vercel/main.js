@@ -2,7 +2,6 @@ import process from 'node:process'
 import { bodyData } from 'body-data'
 
 import { translate } from './translate.js'
-import 'dotenv/config'
 
 const token = (process.env.token || '').split(',').filter(Boolean)
 
