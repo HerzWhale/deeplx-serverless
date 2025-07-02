@@ -28,7 +28,8 @@
    * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
    */
   "vars": {
-    "token": "test1,test2"
+    // "token": "test1,test2"
+    "token": "deeplx-serverless"
   }
   /**
    * Note: Use secrets to store sensitive data.
