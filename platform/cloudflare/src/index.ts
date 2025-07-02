@@ -12,8 +12,8 @@ export default {
   async fetch(request, env, _ctx): Promise<Response> {
     const url = new URL(request.url)
     const path = url.pathname
-
     const token = (env.token || '').split(',').filter(Boolean)
+
     const { params, body } = {
       body: request.method?.toUpperCase() === 'POST' ? await request.json() as IBody : void 0,
       params: getParams(request) as IParams,
