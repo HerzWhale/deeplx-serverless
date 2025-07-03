@@ -6,11 +6,10 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "start": "wrangler dev",
-    "test": "vitest",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "body-data": "^2.0.1",
+    "body-data": "^2.0.3",
     "deeplx-lib": "^0.0.4"
   },
   "devDependencies": {

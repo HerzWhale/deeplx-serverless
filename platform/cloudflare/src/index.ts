@@ -1,12 +1,7 @@
 import type { IDeepLData, IDeepLDataError, IOptions, TSourceLanguage, TTargetLanguage } from 'deeplx-lib'
 import type { IBody, IParams } from './types'
-// import { getParams } from 'body-data'
+import { bodyData } from 'body-data'
 import { parse2DeepLX, translate } from 'deeplx-lib'
-
-function getParams(request: Request) {
-  const url = new URL(request.url)
-  return Object.fromEntries(url.searchParams) as unknown as IParams
-}
 
 export default {
   async fetch(request, env, _ctx): Promise<Response> {
@@ -14,10 +9,7 @@ export default {
     const path = url.pathname
     const token = (env.token || '').split(',').filter(Boolean)
 
-    const { params, body } = {
-      body: request.method?.toUpperCase() === 'POST' ? await request.json() as IBody : void 0,
-      params: getParams(request) as IParams,
-    }
+    const { params, body } = await bodyData<IParams, IBody>(request, { backContentType: 'application/json; charset=utf-8' })
 
     if (token.length) {
       if (!(params?.token && token.includes(params.token))) {
