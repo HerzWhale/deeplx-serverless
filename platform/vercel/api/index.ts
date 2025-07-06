@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node'
 import type { IDeepLData, IDeepLDataError, IOptions, TSourceLanguage, TTargetLanguage } from 'deeplx-lib'
 import type { IBody, IParams } from '../types'
 import process from 'node:process'
+import { bodyData } from 'body-data'
 import { parse2DeepLX, translate } from 'deeplx-lib'
 
 const token = (process.env.token || '').split(',').filter(Boolean)
@@ -11,8 +12,7 @@ export default async (request: VercelRequest, response: VercelResponse) => {
   response.setHeader('Content-Type', 'application/json; charset=utf-8')
   const path = request.url
 
-  const params = request.query as unknown as IParams
-  const body = await request.body as IBody
+  const { params, body } = await bodyData<IParams, IBody>(request, { backContentType: 'application/json; charset=utf-8' })
 
   if (token.length) {
     if (!(params?.token && token.includes(params.token))) {

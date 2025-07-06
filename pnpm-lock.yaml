@@ -59,6 +59,9 @@ importers:
 
   platform/vercel:
     dependencies:
+      body-data:
+        specifier: ^2.0.4
+        version: 2.0.4
       deeplx-lib:
         specifier: ^0.0.4
         version: 0.0.4
@@ -1906,6 +1909,9 @@ packages:
 
   body-data@2.0.3:
     resolution: {integrity: sha512-yq0K3eIpzktjRhNlBeMIj9xqXrWglpGIfRP77f3tCdn/cgyL+Oe+K9RxIt94HE+ej72Hk2KocbIypBhWt636Iw==}
+
+  body-data@2.0.4:
+    resolution: {integrity: sha512-uEIZE9E8IVigjHcZui2m7wHGDNA8nACfWbt61mdNgTlKXBUsioHSCishX2bls+cqV6AkOu7OXOXQpCb4mBxyDQ==}
 
   body-parser@1.20.3:
     resolution: {integrity: sha512-7rAxByjUMqQ3/bHJy7D6OGXvx/MMc4IqBn/X0fcM1QUcAItpZrBEYhWGem+tzXH90c+G01ypMcYJBO9Y30203g==}
@@ -8021,6 +8027,8 @@ snapshots:
   body-data@2.0.1: {}
 
   body-data@2.0.3: {}
+
+  body-data@2.0.4: {}
 
   body-parser@1.20.3:
     dependencies:

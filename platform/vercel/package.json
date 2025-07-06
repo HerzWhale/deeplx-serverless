@@ -8,6 +8,7 @@
     "deploy": "vercel deploy"
   },
   "dependencies": {
+    "body-data": "^2.0.4",
     "deeplx-lib": "^0.0.4"
   },
   "devDependencies": {
