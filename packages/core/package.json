@@ -1,0 +1,40 @@
+{
+  "name": "core",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.6.2",
+  "description": "this is the core of deeplx-serverless",
+  "author": "Lete114",
+  "license": "MIT",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint",
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "body-data": "^2.0.4",
+    "deeplx-lib": "^0.0.4"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.16.2",
+    "@types/node": "^24.0.10",
+    "eslint": "^9.30.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "unbuild": "^3.5.0"
+  }
+}

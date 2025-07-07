@@ -1,0 +1,35 @@
+import { IDeepLXData, IDeepLData, IDeepLDataError } from 'deeplx-lib';
+import { IncomingMessage } from 'node:http';
+
+type TMethod = 'GET' | 'POST'
+
+interface IParams {
+  token: string
+}
+
+interface IBody {
+  from: string
+  to: string
+  text: string
+  source_lang: string
+  target_lang: string
+}
+
+interface IOptions {
+  request: IncomingMessage | Request
+  token?: string | string[]
+}
+
+interface IResultData {
+  code: number
+  msg: string
+}
+
+type TDeepLData = IDeepLData & IDeepLDataError & { code: number }
+
+type TResultData = IResultData | IDeepLXData | TDeepLData
+
+declare const _default: (options: IOptions) => Promise<TResultData>;
+
+export { _default as default };
+export type { IBody, IOptions, IParams, IResultData, TDeepLData, TMethod, TResultData };
