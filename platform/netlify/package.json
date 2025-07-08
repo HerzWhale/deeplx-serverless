@@ -8,8 +8,7 @@
     "deploy": "netlify deploy"
   },
   "dependencies": {
-    "body-data": "^2.0.3",
-    "deeplx-lib": "^0.0.4"
+    "core": "github:lete114/deeplx-serverless#path:packages/core"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

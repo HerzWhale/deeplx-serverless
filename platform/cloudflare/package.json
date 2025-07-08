@@ -9,8 +9,7 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "body-data": "^2.0.3",
-    "deeplx-lib": "^0.0.4"
+    "core": "github:lete114/deeplx-serverless#path:packages/core"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.8.19",

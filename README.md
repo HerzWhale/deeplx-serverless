@@ -30,6 +30,16 @@ curl 'https://your-api-address/translate?token=your-token' \
     "from": "en",
     "to": "zh"
 }'
+
+# or
+curl 'https://your-api-address/translate' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer your-token' \
+--data '{
+    "text": "Hello, World",
+    "from": "en",
+    "to": "zh"
+}'
 ```
 
 Response example:
