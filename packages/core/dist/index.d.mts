@@ -1,4 +1,3 @@
-import { IDeepLXData, IDeepLData, IDeepLDataError } from 'deeplx-lib';
 import { IncomingMessage } from 'node:http';
 
 type TMethod = 'GET' | 'POST'
@@ -25,11 +24,9 @@ interface IResultData {
   msg: string
 }
 
-type TDeepLData = IDeepLData & IDeepLDataError & { code: number }
+declare const _default: (options: IOptions) => Promise<Response>;
 
-type TResultData = IResultData | IDeepLXData | TDeepLData
+declare function handle(options: IOptions): Promise<Response>;
 
-declare const _default: (options: IOptions) => Promise<TResultData>;
-
-export { _default as default };
-export type { IBody, IOptions, IParams, IResultData, TDeepLData, TMethod, TResultData };
+export { _default as default, handle };
+export type { IBody, IOptions, IParams, IResultData, TMethod };

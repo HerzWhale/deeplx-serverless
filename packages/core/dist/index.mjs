@@ -23,6 +23,34 @@ function authToken({ tokens, authorization, token }) {
 }
 
 const index = async (options) => {
+  const METHODS = ["GET", "HEAD", "POST", "OPTIONS"];
+  const method = options.request.method || "GET";
+  const headers = new Headers({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": METHODS.join(", "),
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Content-Type": "application/json; charset=utf-8"
+  });
+  if (!METHODS.includes(method)) {
+    return new Response(null, { status: 405, headers });
+  }
+  const responseInit = {
+    headers
+  };
+  if (method === "HEAD") {
+    return new Response(null, {
+      headers,
+      status: 200
+    });
+  }
+  if (method === "OPTIONS") {
+    return new Response(null, { headers });
+  }
+  const data = await handle(options).then((r) => r.json());
+  responseInit.status = data.code;
+  return new Response(JSON.stringify(data), responseInit);
+};
+async function handle(options) {
   const { token } = options;
   const request = toWebRequest(options.request);
   const url = new URL(request.url);
@@ -34,7 +62,7 @@ const index = async (options) => {
   if (!auth) {
     const code = 403;
     const msg = `Request missing authentication information`;
-    return { code, msg };
+    return Response.json({ code, msg }, { status: code });
   }
   if (request.method.toUpperCase() === "POST" && body) {
     if (body.source_lang) {
@@ -51,16 +79,18 @@ const index = async (options) => {
       const response = await translate(options2);
       const translateData = await response.json();
       if (translateData.error) {
-        const code = response.status;
-        return { code, ...translateData };
+        const code2 = response.status;
+        return Response.json({ code: code2, ...translateData }, { status: code2 });
       }
       const responseData = parse2DeepLX({ ...options2, ...translateData });
-      return responseData;
+      return Response.json(responseData, { status: response.status });
     }
-    return { code: 404, msg: "Not found" };
+    const code = 404;
+    return Response.json({ code, msg: "Not found" }, { status: code });
   } else {
-    return { code: 404, msg: "Not found" };
+    const code = 404;
+    return Response.json({ code, msg: "Not found" }, { status: code });
   }
-};
+}
 
-export { index as default };
+export { index as default, handle };

@@ -1,12 +1,45 @@
 import type { IOptions as deepLXOptions, IDeepLData, IDeepLDataError, TSourceLanguage, TTargetLanguage } from 'deeplx-lib'
-import type { IBody, IOptions, IParams, TResultData } from './types'
+import type { IBody, IOptions, IParams } from './types'
 import { bodyData, toWebRequest } from 'body-data'
 import { parse2DeepLX, translate } from 'deeplx-lib'
 import { authToken, parseToken } from './utils'
 
 export * from './types.d'
 
-export default async (options: IOptions): Promise<TResultData> => {
+export default async (options: IOptions): Promise<Response> => {
+  const METHODS = ['GET', 'HEAD', 'POST', 'OPTIONS']
+  const method = options.request.method || 'GET'
+  const headers = new Headers({
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': METHODS.join(', '),
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    'Content-Type': 'application/json; charset=utf-8',
+  })
+
+  if (!METHODS.includes(method)) {
+    return new Response(null, { status: 405, headers })
+  }
+
+  const responseInit: ResponseInit = {
+    headers,
+  }
+  if (method === 'HEAD') {
+    return new Response(null, {
+      headers,
+      status: 200,
+    })
+  }
+  if (method === 'OPTIONS') {
+    return new Response(null, { headers })
+  }
+
+  const data = await handle(options).then(r => r.json())
+
+  responseInit.status = data.code
+  return new Response(JSON.stringify(data), responseInit)
+}
+
+export async function handle(options: IOptions): Promise<Response> {
   const { token } = options
   const request = toWebRequest(options.request)
   const url = new URL(request.url)
@@ -20,7 +53,7 @@ export default async (options: IOptions): Promise<TResultData> => {
   if (!auth) {
     const code = 403
     const msg = `Request missing authentication information`
-    return { code, msg }
+    return Response.json({ code, msg }, { status: code })
   }
 
   if (request.method.toUpperCase() === 'POST' && body) {
@@ -41,19 +74,21 @@ export default async (options: IOptions): Promise<TResultData> => {
 
       if (translateData.error) {
         const code = response.status
-        return { code, ...translateData }
+        return Response.json({ code, ...translateData }, { status: code })
       }
 
       const responseData = parse2DeepLX({ ...options, ...translateData })
-      return responseData
+      return Response.json(responseData, { status: response.status })
     }
 
-    return { code: 404, msg: 'Not found' }
+    const code = 404
+    return Response.json({ code, msg: 'Not found' }, { status: code })
   }
   // else if (req.method.toUpperCase() === 'GET') {
 
   // }
   else {
-    return { code: 404, msg: 'Not found' }
+    const code = 404
+    return Response.json({ code, msg: 'Not found' }, { status: code })
   }
 }

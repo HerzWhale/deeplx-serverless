@@ -1,4 +1,3 @@
-import type { IDeepLData, IDeepLDataError, IDeepLXData } from 'deeplx-lib'
 import type { IncomingMessage } from 'node:http'
 
 export type TMethod = 'GET' | 'POST'
@@ -24,7 +23,3 @@ export interface IResultData {
   code: number
   msg: string
 }
-
-export type TDeepLData = IDeepLData & IDeepLDataError & { code: number }
-
-export type TResultData = IResultData | IDeepLXData | TDeepLData
