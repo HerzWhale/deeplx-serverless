@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "packageManager": "pnpm@10.12.4",
   "scripts": {
-    "start": "netlify dev",
+    "start": "netlify dev BROWSER=none",
     "deploy": "netlify deploy"
   },
   "dependencies": {
-    "core": "github:lete114/deeplx-serverless#path:packages/core"
+    "core": "github:lete114/deeplx-serverless#v0.0.1&path:packages/core"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

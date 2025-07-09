@@ -5,30 +5,14 @@ import core from 'core'
 const token = process.env.token
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  const METHODS = ['GET', 'HEAD', 'POST', 'OPTIONS']
-  const method = request.method || 'GET'
-  response.setHeader('Access-Control-Allow-Origin', '*')
-  response.setHeader('Access-Control-Allow-Methods', METHODS.join(', '))
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  response.setHeader('Content-Type', 'application/json; charset=utf-8')
+  const webResponse = await core({ request, token })
+  webResponse.headers.forEach((value, key) => response.setHeader(key, value))
 
-  if (!METHODS.includes(method)) {
-    response.writeHead(405)
-    return response.end()
+  response.writeHead(webResponse.status)
+  if (webResponse.body) {
+    await webResponse.body.pipeTo(new WritableStream({
+      write(chunk) { response.write(chunk) },
+      close() { response.end() },
+    }))
   }
-
-  if (method === 'HEAD') {
-    response.writeHead(200)
-    return response.end()
-  }
-
-  if (method === 'OPTIONS') {
-    response.writeHead(200)
-    return response.end()
-  }
-
-  const data = await core({ request, token })
-
-  response.writeHead(data.code)
-  response.end(JSON.stringify(data))
 }
