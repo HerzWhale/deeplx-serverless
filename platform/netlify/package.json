@@ -8,7 +8,7 @@
     "deploy": "netlify deploy"
   },
   "dependencies": {
-    "core": "github:lete114/deeplx-serverless#v0.0.1&path:packages/core"
+    "core": "github:lete114/deeplx-serverless#v0.0.2&path:packages/core"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

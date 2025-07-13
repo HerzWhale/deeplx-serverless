@@ -13,7 +13,7 @@ importers:
         version: 2.0.1
       core:
         specifier: github:lete114/deeplx-serverless#v0.0.1&path:packages/core
-        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core
+        version: git+https://git@github.com:lete114/deeplx-serverless.git#d98108694f77a99355e4b453fa6bad3e6358701f&path:packages/core
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.6.0
@@ -62,8 +62,8 @@ importers:
   platform/cloudflare:
     dependencies:
       core:
-        specifier: github:lete114/deeplx-serverless#v0.0.1&path:packages/core
-        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core
+        specifier: github:lete114/deeplx-serverless#v0.0.2&path:packages/core
+        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771#path:packages/core
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.8.19
@@ -78,8 +78,8 @@ importers:
   platform/netlify:
     dependencies:
       core:
-        specifier: github:lete114/deeplx-serverless#v0.0.1&path:packages/core
-        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core
+        specifier: github:lete114/deeplx-serverless#v0.0.2&path:packages/core
+        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771#path:packages/core
     devDependencies:
       '@types/node':
         specifier: ^24.0.10
@@ -91,8 +91,8 @@ importers:
   platform/vercel:
     dependencies:
       core:
-        specifier: github:lete114/deeplx-serverless#v0.0.1&path:packages/core
-        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core
+        specifier: github:lete114/deeplx-serverless#v0.0.2&path:packages/core
+        version: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771#path:packages/core
     devDependencies:
       '@types/node':
         specifier: ^24.0.10
@@ -2573,9 +2573,13 @@ packages:
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
-  core@https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core:
-    resolution: {path: packages/core, tarball: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f}
+  core@git+https://git@github.com:lete114/deeplx-serverless.git#d98108694f77a99355e4b453fa6bad3e6358701f&path:packages/core:
+    resolution: {commit: d98108694f77a99355e4b453fa6bad3e6358701f, path: packages/core, repo: git@github.com:lete114/deeplx-serverless.git, type: git}
     version: 0.0.1
+
+  core@https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771#path:packages/core:
+    resolution: {path: packages/core, tarball: https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771}
+    version: 0.0.2
 
   cpy@11.1.0:
     resolution: {integrity: sha512-QGHetPSSuprVs+lJmMDcivvrBwTKASzXQ5qxFvRC2RFESjjod71bDvFvhxTjDgkNjrrb72AI6JPjfYwxrIy33A==}
@@ -9659,7 +9663,12 @@ snapshots:
 
   core-util-is@1.0.3: {}
 
-  core@https://codeload.github.com/lete114/deeplx-serverless/tar.gz/d98108694f77a99355e4b453fa6bad3e6358701f#path:packages/core:
+  core@git+https://git@github.com:lete114/deeplx-serverless.git#d98108694f77a99355e4b453fa6bad3e6358701f&path:packages/core:
+    dependencies:
+      body-data: 2.0.4
+      deeplx-lib: 0.0.4
+
+  core@https://codeload.github.com/lete114/deeplx-serverless/tar.gz/14798be5e6d6b613c33efa334df651cef1966771#path:packages/core:
     dependencies:
       body-data: 2.0.4
       deeplx-lib: 0.0.4
