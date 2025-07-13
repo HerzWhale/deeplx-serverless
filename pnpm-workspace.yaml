@@ -4,6 +4,5 @@ packages:
 
 onlyBuiltDependencies:
   - esbuild
-  - sharp
   - simple-git-hooks
   - workerd

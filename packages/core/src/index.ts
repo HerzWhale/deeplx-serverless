@@ -64,6 +64,9 @@ export async function handle(options: IOptions): Promise<Response> {
       body.to = body.target_lang
     }
 
+    // fix unsupported regional variant
+    body.to = body.to.split('-')[0]
+
     if (path.startsWith('/translate') && body.to && body.text) {
       const text = body.text
       const from = (body.from || 'AUTO').toUpperCase() as TSourceLanguage

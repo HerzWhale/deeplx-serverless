@@ -71,6 +71,7 @@ async function handle(options) {
     if (body.target_lang) {
       body.to = body.target_lang;
     }
+    body.to = body.to.split("-")[0];
     if (path.startsWith("/translate") && body.to && body.text) {
       const text = body.text;
       const from = (body.from || "AUTO").toUpperCase();
