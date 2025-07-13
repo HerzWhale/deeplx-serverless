@@ -24,10 +24,6 @@
     "lint:fix": "eslint . --fix",
     "prepare": "simple-git-hooks"
   },
-  "dependencies": {
-    "body-data": "^2.0.1",
-    "core": "github:lete114/deeplx-serverless#v0.0.1&path:packages/core"
-  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
     "eslint": "^9.10.0",
