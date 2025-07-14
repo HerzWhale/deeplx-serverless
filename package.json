@@ -19,6 +19,13 @@
     "translate",
     "free"
   ],
+  "exports": {
+    ".": "./packages/core/dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./packages/core/dist/index.mjs",
+  "module": "./packages/core/dist/index.mjs",
+  "types": "./packages/core/dist/index.d.mts",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
