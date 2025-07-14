@@ -29,7 +29,6 @@
    */
   "vars": {
     // "token": "test1,test2"
-    "token": ""
   }
   /**
    * Note: Use secrets to store sensitive data.

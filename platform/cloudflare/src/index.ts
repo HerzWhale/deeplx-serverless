@@ -1,3 +1,4 @@
+import type { IEnv } from './types'
 import deeplxServerless from 'deeplx-serverless'
 
 export default {
@@ -5,4 +6,4 @@ export default {
     const token = env.token
     return deeplxServerless({ request, token })
   },
-} satisfies ExportedHandler<Env>
+} satisfies ExportedHandler<IEnv>
