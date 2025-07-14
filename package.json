@@ -31,6 +31,10 @@
     "lint:fix": "eslint . --fix",
     "prepare": "simple-git-hooks"
   },
+  "dependencies": {
+    "body-data": "^2.0.4",
+    "deeplx-lib": "^0.0.4"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^3.6.0",
     "eslint": "^9.10.0",

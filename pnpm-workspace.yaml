@@ -2,10 +2,6 @@ packages:
   - packages/*
   - platform/*
 
-onlyBuiltDependencies:
-  - esbuild
-  - simple-git-hooks
-  - workerd
 catalog:
   '@antfu/eslint-config': ^4.16.2
   '@types/node': ^24.0.10
@@ -15,3 +11,8 @@ catalog:
   tsx: ^4.20.3
   typescript: ^5.8.3
   unbuild: ^3.5.0
+
+onlyBuiltDependencies:
+  - esbuild
+  - simple-git-hooks
+  - workerd

@@ -7,6 +7,13 @@ settings:
 importers:
 
   .:
+    dependencies:
+      body-data:
+        specifier: ^2.0.4
+        version: 2.0.4
+      deeplx-lib:
+        specifier: ^0.0.4
+        version: 0.0.4
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^3.6.0
