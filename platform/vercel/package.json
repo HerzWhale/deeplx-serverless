@@ -8,7 +8,7 @@
     "deploy": "vercel deploy"
   },
   "dependencies": {
-    "core": "github:lete114/deeplx-serverless#v0.0.2&path:packages/core"
+    "deeplx-serverless": "github:lete114/deeplx-serverless#v0.0.3"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

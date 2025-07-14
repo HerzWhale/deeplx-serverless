@@ -1,11 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import process from 'node:process'
-import core from 'core'
+import deeplxServerless from 'deeplx-serverless'
 
 const token = process.env.token
 
 export default async (request: VercelRequest, response: VercelResponse) => {
-  const webResponse = await core({ request, token })
+  const webResponse = await deeplxServerless({ request, token })
   webResponse.headers.forEach((value, key) => response.setHeader(key, value))
 
   response.writeHead(webResponse.status)

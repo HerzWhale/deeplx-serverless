@@ -29,7 +29,7 @@
    */
   "vars": {
     // "token": "test1,test2"
-    "token": "deeplx-serverless"
+    "token": ""
   }
   /**
    * Note: Use secrets to store sensitive data.
