@@ -22,5 +22,5 @@ export function authToken({ tokens, authorization, token }: { tokens: string[], 
     return tokens.includes(token)
   }
 
-  return true
+  return false
 }

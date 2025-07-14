@@ -19,7 +19,7 @@ function authToken({ tokens, authorization, token }) {
   if (token) {
     return tokens.includes(token);
   }
-  return true;
+  return false;
 }
 
 const index = async (options) => {
